@@ -2,3 +2,18 @@
 <br />
 <br />
 <button (click)="addArray()">Click me</button>
+<div [formGroup]="formGroup">
+  ชื่อ : <input formControlName="promotionGroupDesc" />
+  <div formArrayName="carBrandList">
+    <div
+      *ngFor="
+        let control of formGroup.get('carBrandList')['controls'];
+        let i = index
+      "
+    >
+      <div [formGroupName]="i">
+        ที่อยู่ที่{{ i }} : <input formControlName="carBrandId" />
+      </div>
+    </div>
+  </div>
+</div>
